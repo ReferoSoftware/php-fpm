@@ -1,0 +1,10 @@
+#! /bin/sh
+
+# Experimental example - not fully tested hence the _ prefix
+
+# This would differ per your requirements
+# For instance if you're running laravel I would reccomend an artisan command
+# i.e. php artisan wait:service-dependencies
+# You would get the added bonus of checking that the normal application
+# connection flow works correctly
+php ./wait-for-dependencies.php

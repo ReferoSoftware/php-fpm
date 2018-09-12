@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  app-volume:
+    image: cogniteev/echo
+    volumes:
+      - "./app:/custom/location"
+
+  nginx:
+    # You will need to configure an NGiNX server using the php-fpm container
+    image: refero/nginx:latest
+    depends_on:
+      - phpfpm
+    ports:
+      - "8080:80"
+    volumes_from:
+      - app-volume
+    environment:
+      PHP_FPM_HOST: phpfpm
+      PHP_FPM_PORT: 9000
+
+  phpfpm:
+    image: refero/php-fpm:latest
+    volumes_from:
+      - app-volume
+    depends_on:
+      - mysql
+    environment:
+      LISTEN_HOST: 127.0.0.1
+      LISTEN_PORT: 9000
+      APP_DIR: "/custom/location"
+      DB_HOST: "mysql:3306"
+      DB_USER: "some-user"
+      DB_NAME: "some-db"
+      DB_PASSWORD: "super-secure-password"
+
+  mysql:
+    image: mysql:5.7
+    ports:
+        - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "super-secure-password"
+      MYSQL_DATABASE: "some-db"
+      MYSQL_USER: "some-user"
+      MYSQL_PASSWORD: "super-secure-password"

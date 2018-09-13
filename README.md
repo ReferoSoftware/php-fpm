@@ -18,7 +18,7 @@ This image is aware of the following environment variables:
 
 | Environment variable | Default value   | Description |
 |----------------------|-----------------|-------------|
-| `LISTEN_HOST`        | `127.0.0.1`     | Changes the host in listen directive for php-fpm to the supplied value. |
+| `LISTEN_HOST`        | `0.0.0.0`       | Changes the host in listen directive for php-fpm to the supplied value. |
 | `LISTEN_PORT`        | `9000`          | Changes the port in the listen directive for php-fpm to the supplied value. |
 | `APP_DIR`            | `/opt/app-root` | This is only really required if you want to use a readiness probe. It should be the directory where you have placed the application code. |
 

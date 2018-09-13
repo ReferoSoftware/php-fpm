@@ -1,7 +1,7 @@
 #! /bin/sh
 
 _APP_DIR=${APP_DIR:-/opt/app-root}
-_LISTEN_HOST=${LISTEN_HOST:-127.0.0.1}
+_LISTEN_HOST=${LISTEN_HOST:-0.0.0.0}
 _LISTEN_PORT=${LISTEN_PORT:-9000}
 chown -R 1001:1001 $_APP_DIR
 
